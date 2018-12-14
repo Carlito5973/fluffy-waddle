@@ -41,14 +41,28 @@ class Carlito5973Player extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-        
+
         $appChoice = $this->result->getLastChoiceFor($this->mySide);
-        if ($appChoice == "")
+        if ($appChoice == '')
         {
-            $appChoice = parent::friendChoice();
+            return parent::friendChoice();
         }
         else{
-            if ($this->result->getLastChoiceFor($this->opponentSide) == parent::friendChoice())
+            $total = $this->result->getStatsFor($this->opponentSide)['friend'] + $this->result->getStatsFor($this->opponentSide)['foe'];
+            $foe = $this->result->getStatsFor($this->opponentSide)['foe'];
+            if ($total > 0 && ($foe / $total) > 0.8)
+            {
+                return parent::foeChoice();
+            }
+            else
+            {
+                if ($this->result->getLastChoiceFor($this->opponentSide) == parent::friendChoice())
+                    return parent::friendChoice();
+                if ($this->result->getLastChoiceFor($this->opponentSide) == parent::foeChoice())
+                    return parent::foeChoice();
+            }
+        }
+           /* if ($this->result->getLastChoiceFor($this->opponentSide) == parent::friendChoice())
             {
                 $appChoice = parent::foeChoice();
             }
@@ -61,7 +75,7 @@ class Carlito5973Player extends Player
                     }
             }
         }
-        return $appChoice;
+        return $appChoice;*/
     }
  
 };
