@@ -41,7 +41,7 @@ class Carlito5973Player extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-        $this->prettyDisplay();
+        
         $appChoice = $this->result->getLastChoiceFor($this->mySide);
         if ($appChoice == "")
         {
