@@ -52,7 +52,7 @@ class Carlito5973Player extends Player
             $foe = $this->result->getStatsFor($this->opponentSide)['foe'];
             if ($total > 0 && ($foe / $total) > 0.8)
             {
-                return parent::foeChoice();
+                return parent::friendChoice();
             }
             else
             {
@@ -62,20 +62,6 @@ class Carlito5973Player extends Player
                     return parent::foeChoice();
             }
         }
-           /* if ($this->result->getLastChoiceFor($this->opponentSide) == parent::friendChoice())
-            {
-                $appChoice = parent::foeChoice();
-            }
-            if ($this->result->getLastChoiceFor($this->opponentSide) == parent::foeChoice())
-            {
-                if (sizeof($this->result->getChoicesFor($this->opponentSide),0) > 1)
-                    if ($this->result->getChoicesFor($this->opponentSide)[1] == parent::foeChoice() )
-                    {
-                        $appChoice = parent::friendChoice();
-                    }
-            }
-        }
-        return $appChoice;*/
     }
  
 };
