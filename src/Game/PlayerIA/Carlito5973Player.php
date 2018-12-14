@@ -45,14 +45,14 @@ class Carlito5973Player extends Player
         $appChoice = $this->result->getLastChoiceFor($this->mySide);
         if ($appChoice == '')
         {
-            return parent::foeChoice();
+            return parent::friendChoice();
         }
         else{
             $total = $this->result->getStatsFor($this->opponentSide)['friend'] + $this->result->getStatsFor($this->opponentSide)['foe'];
             $foe = $this->result->getStatsFor($this->opponentSide)['foe'];
             if ($total > 0 && ($foe / $total) > 0.8)
             {
-                return parent::friendChoice();
+                return parent::foeChoice();
             }
             else
             {
